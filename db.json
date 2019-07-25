@@ -6,11 +6,6 @@
       "precio": "100"
     },
     {
-      "id": 2,
-      "nombre": "Pastel 3",
-      "precio": 60
-    },
-    {
       "id": 3,
       "nombre": "Pastel 4",
       "precio": 30
