@@ -1,4 +1,4 @@
-import { MOSTRAR_PRODUCTOS, ELIMINAR_PRODUCTO } from '../actions/types';
+import { MOSTRAR_PRODUCTOS, ELIMINAR_PRODUCTO,AGREGAR_PRODUCTO,MOSTRAR_PRODUCTO} from '../actions/types';
 
 //cada reducer tiene su propio state
 
@@ -18,6 +18,18 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 productos: state.productos.filter(producto => producto.id !== action.payload)
+            }
+
+        case AGREGAR_PRODUCTO:
+            return {
+                ...state,
+                productos:[...state.productos, action.payload]
+            }
+
+        case MOSTRAR_PRODUCTO:
+            return {
+                ...state,
+                producto: action.payload
             }
         default: return state;
     }

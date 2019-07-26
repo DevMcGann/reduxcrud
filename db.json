@@ -6,24 +6,29 @@
       "precio": "100"
     },
     {
-      "id": 3,
-      "nombre": "Pastel 4",
-      "precio": 30
-    },
-    {
-      "nombre": "Pastel de Zanahoria",
-      "precio": "45",
-      "id": 4
-    },
-    {
       "nombre": "Pastel de Chocolate",
       "precio": "60",
       "id": 5
     },
     {
-      "nombre": "Pastel de Fresa",
-      "precio": "40",
-      "id": 6
+      "nombre": "Tiramisú",
+      "precio": "50",
+      "id": 7
+    },
+    {
+      "nombre": "Selva Negra",
+      "precio": "120",
+      "id": 8
+    },
+    {
+      "nombre": "Cheesecake",
+      "precio": "100",
+      "id": 9
+    },
+    {
+      "nombre": "Chocotorta",
+      "precio": "120",
+      "id": 10
     }
   ]
 }
