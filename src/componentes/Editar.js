@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 
 //redux
-import {connect} from 'react-redux'
-import {mostrarProducto} from '../actions/productosActions'
+import { connect } from 'react-redux'
+import { mostrarProducto, editarProducto } from '../actions/productosActions'
 
 
 class EditarProducto extends Component {
@@ -11,18 +11,18 @@ class EditarProducto extends Component {
 
     state = {
         nombre: '',
-        precio:'',
-        error:false
+        precio: '',
+        error: false
     }
 
 
-    componentDidMount(){
-        const {id} = this.props.match.params;
+    componentDidMount() {
+        const { id } = this.props.match.params;
         this.props.mostrarProducto(id);
     }
 
-    componentWillReceiveProps(nextProps,nextState){
-        const {nombre,precio} = nextProps.producto;
+    componentWillReceiveProps(nextProps, nextState) {
+        const { nombre, precio } = nextProps.producto;
         this.setState({
             nombre,
             precio
@@ -31,29 +31,29 @@ class EditarProducto extends Component {
 
 
     nombreProducto = (e) => {
-        this.setState({nombre:e.target.value})
+        this.setState({ nombre: e.target.value })
     }
 
     precioProducto = (e) => {
-        this.setState({precio:e.target.value})
+        this.setState({ precio: e.target.value })
     }
 
     //submit del formulario
     actualizarProducto = (e) => {
         e.preventDefault()
 
-        const {nombre,precio} = this.state
+        const { nombre, precio } = this.state
 
 
         if (nombre === '' || precio === '') {
-            this.setState({error:true})
+            this.setState({ error: true })
             return;
         }
-        this.setState({error:false})
+        this.setState({ error: false })
 
         //tomar el id
-        const {id} = this.props.match.params
-        
+        const { id } = this.props.match.params
+
         //crear el objeto, los nombres deben ser iguales a como esten en la API
         const infoProducto = {
             id,
@@ -72,46 +72,46 @@ class EditarProducto extends Component {
 
     render() {
 
-            const {nombre,precio, error} =this.state;
+        const { nombre, precio, error } = this.state;
 
         return (
             <div className="row justify-content-center mt-5">
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-body">
-                             <h2 className="text-center">Editar Producto</h2>
-                                <form onSubmit={this.actualizarProducto}>
-                                     <div className="form-group">
-                                        <label>Titulo</label>
-                                        <input defaultValue={nombre} onChange={this.nombreProducto} type="text" className="form-control" placeholder="Titulo" />
-                                    </div>
-                                    <div className="form-group">
-                                         <label>Precio del Producto</label>
-                                          <input defaultValue={precio} onChange={this.precioProducto} type="text" className="form-control" placeholder="Precio" />
-                                     </div>
-                                     <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Guardar Cambios</button>
-                                 </form>
+                            <h2 className="text-center">Editar Producto</h2>
+                            <form onSubmit={this.actualizarProducto}>
+                                <div className="form-group">
+                                    <label>Titulo</label>
+                                    <input defaultValue={nombre} onChange={this.nombreProducto} type="text" className="form-control" placeholder="Titulo" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Precio del Producto</label>
+                                    <input defaultValue={precio} onChange={this.precioProducto} type="text" className="form-control" placeholder="Precio" />
+                                </div>
+                                <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Guardar Cambios</button>
+                            </form>
 
-                                 {error ? 
-                                    <div className="font-wight-bold alert alert-danger text-center mt-4">
-                                        Todos los campos son obligatorios!
+                            {error ?
+                                <div className="font-wight-bold alert alert-danger text-center mt-4">
+                                    Todos los campos son obligatorios!
                                     </div>
                                 :
-                                    null    
-                                }
+                                null
+                            }
 
                         </div>
-                 </div>
+                    </div>
+                </div>
             </div>
-         </div>
         );
     }
 }
 
-const mapStateToProps= state =>({
-    producto : state.productos.producto
+const mapStateToProps = state => ({
+    producto: state.productos.producto
 })
 
-export default connect(mapStateToProps,{mostrarProducto})(EditarProducto);
+export default connect(mapStateToProps, { mostrarProducto, editarProducto })(EditarProducto);
 
 /* No lleva StateToProp porque no agrega nada al state, por eso para como NULL */
